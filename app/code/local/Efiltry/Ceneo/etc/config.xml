@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<config>
+    
+    <default>
+        <ceneo_options>
+            <ceneo_settings>
+                <work_days_to_send_questionnaire><![CDATA[5]]></work_days_to_send_questionnaire>
+                <allow_send_email_message><![CDATA[W celu wysłania drogą elektroniczną ankiet badających satysfakcję klientów z dokonanych zakupów w sklepie w ramach programu „Zaufane Opinie” wyrażam zgodę na przekazanie moich danych osobowych, w tym adresu e-mail oraz informacji o dokonanym zakupie w sklepie {{store_name}}, spółce Ceneo Sp. z o.o. z siedzibą w Poznaniu, 60-166 Poznań, ul. Grunwaldzka 182 oraz ich przetwarzanie przez Ceneo.]]></allow_send_email_message>
+            </ceneo_settings>
+        </ceneo_options>
+    </default>
+
+    <modules>
+        <Efiltry_Ceneo>
+            <version>0.1.0</version>
+        </Efiltry_Ceneo>
+    </modules>
+    <global>
+        <models>
+            <ceneo>
+                <class>Efiltry_Ceneo_Model</class>
+            </ceneo>
+        </models>
+        <blocks>
+            <ceneo>
+                <class>Efiltry_Ceneo_Block</class>
+            </ceneo>
+            <checkout>
+                <rewrite>
+                    <onepage_success>Efiltry_Ceneo_Block_Onepage_Success</onepage_success>
+                </rewrite>
+            </checkout>
+        </blocks>
+        <helpers>
+            <ceneo>
+                <class>Efiltry_Ceneo_Helper</class>
+            </ceneo>
+        </helpers>
+        
+    </global>
+    
+    <frontend>
+        
+        <layout>
+            <updates>
+                <ceneo>
+                    <file>efiltry_ceneo.xml</file>
+                </ceneo>
+            </updates>
+        </layout>
+        
+        
+    </frontend>
+</config>

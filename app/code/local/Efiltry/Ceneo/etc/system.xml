@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <ceneo translate="label" module="ceneo">
+            <label>Efiltry</label>
+            <sort_order>1</sort_order>
+        </ceneo>
+    </tabs>
+     
+    <sections>
+        <ceneo_options translate="label" module="ceneo">
+            <label>Ceneo integracja</label>
+            <tab>ceneo</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <ceneo_settings translate="label">
+                    <label>Ustawienia Ceneo</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>                
+                    <fields>
+                        <cene_user_guid>
+                            <label>Ceneo GUID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Identyfikator użytkonika ceneo</comment>                   
+                        </cene_user_guid>
+                        <allow_send_email_message>
+                            <label>Text zgody użytkownika na wysłanie adresu e-mail do ceneo</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>  
+                        </allow_send_email_message>
+                        <work_days_to_send_questionnaire>
+                            <label>Liczba dni do wysłania kwestionariusza</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Po ilu dniach od daty zakupu ma zostać wysłany kwestionariusz do użytkownika. Minimum 0 maksimum 21 dni.</comment>                   
+                        </work_days_to_send_questionnaire>
+                    </fields>
+                </ceneo_settings>
+            </groups>                
+        </ceneo_options>
+    </sections>
+</config>
