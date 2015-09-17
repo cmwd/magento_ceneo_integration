@@ -1,0 +1,1 @@
+This is a very simple module for integrate Magento with Ceneo. It has own section in Magento Configuration. To activate extension You have to set Ceneo user guid. Be aware of that this module is overwriting default checkout/success page.
