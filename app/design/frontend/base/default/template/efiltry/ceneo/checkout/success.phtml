@@ -42,7 +42,7 @@
         <div class="form-list">
             <div class="control">
                 <div class="input-box">
-                    <input type="checkbox" id="ceneo_email_conf" class="js-ceneo-email-conf checkbox" name="ceneo_email_conf" />
+                    <input type="checkbox" id="ceneo_email_conf" class="js-ceneo-email-conf checkbox" checked="checked" name="ceneo_email_conf" />
                 </div>
                 <label for="ceneo_email_conf"><?php echo $ceneo_params->allowSendEmailMessage ?></label>
             </div>
@@ -53,16 +53,23 @@
 </div>
 <?php if ($ceneo_params->is_ready): ?>
     <script>
-        ceneo_client_email = '';
-        ceneo_shop_product_ids = '<?php echo $ceneo_params->shop_product_ids ?>';
-        ceneo_order_id = '<?php echo $ceneo_params->order_id ?>';
-        ceneo_work_days_to_send_questionnaire = <?php echo $ceneo_params->work_days_to_send_questionnaire ?>;
+        (function(ceneoOptions) {
+            var $ceneoEmailConf = jQuery('.js-ceneo-email-conf');
+            
+            window['ceneo_client_email'] = $ceneoEmailConf.is(':checked') ? ceneoOptions.clientEmail : '';
+            window['ceneo_shop_product_ids'] = ceneoOptions.productIds;
+            window['ceneo_order_id'] = ceneoOptions.orderId;
+            window['ceneo_work_days_to_send_questionnaire'] = ceneoOptions.questionnaireDelayDays;
 
-        jQuery('.js-ceneo-email-conf')
-            .on('change', function() {
-
-                ceneo_client_email = this.checked ? '<?php echo $ceneo_params->client_email ?>' : '';
+            $ceneoEmailConf.on('change', function() {
+                window['ceneo_client_email'] = this.checked ? ceneoOptions.clientEmail : '';
             });
+        }({
+            clientEmail: '<?php echo $ceneo_params->client_email ?>',
+            productIds: '<?php echo $ceneo_params->shop_product_ids ?>',
+            orderId: '<?php echo $ceneo_params->order_id ?>',
+            questionnaireDelayDays: <?php echo $ceneo_params->work_days_to_send_questionnaire ?>
+        }));
     </script>
     <script type="text/javascript" src="https://ssl.ceneo.pl/transactions/track/v2/script.js?accountGuid=<?php echo $ceneo_params->ceneo_guid ?>"> </script>
 <?php endif ?>
